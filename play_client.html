@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+  <meta charset="utf-8" /> 
+  <title>WebSocket Test</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript">  
+  var wsUri = "ws://localhost:9000"; 
+  function addMessage(text) { $("#output").append("<p>"+text+"</p>"); }
+  function init() { testWebSocket(); } 
+  function testWebSocket() { websocket = new WebSocket(wsUri);
+  websocket.onopen = function(evt) { onOpen(evt) };
+  websocket.onclose = function(evt) { onClose(evt) };
+  websocket.onmessage = function(evt) { onMessage(evt) };
+  websocket.onerror = function(evt) { onError(evt) }; } 
+  function onOpen(evt) { addMessage("CONNECTED"); doSend("Give me a tweet"); }
+  function onClose(evt) { websocket.close(); addMessage("DISCONNECTED"); } 
+  function onMessage(evt) { addMessage('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>'); }  
+  function onError(evt) { addMessage('<span style="color: red;">ERROR:</span> ' + evt.data); } 
+  function doSend(message) { addMessage("SENT: " + message);  websocket.send(message); } 
+  setInterval(function(){doSend("Give me a tweet");},2000)
+  window.addEventListener("load", init, false); 
+</script>  <h2>WebSocket Test</h2>  <div id="output"></div> </html>

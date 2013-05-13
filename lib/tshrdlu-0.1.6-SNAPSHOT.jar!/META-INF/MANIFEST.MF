@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: edu.utexas
+Implementation-Title: tshrdlu
+Implementation-Version: 0.1.6-SNAPSHOT
+Implementation-Vendor-Id: edu.utexas
+Specification-Vendor: edu.utexas
+Specification-Title: tshrdlu
+Specification-Version: 0.1.6-SNAPSHOT
+
